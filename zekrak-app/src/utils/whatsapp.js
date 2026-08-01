@@ -1,10 +1,12 @@
 export function openWhatsAppOrderMulti({ name, phone, email, address, canPost, items }) {
-  const phoneNumber = '201200990798'; // استبدلي الرقم برقم الواتساب الخاص بكِ
+  const phoneNumber = '201200990798';
 
   let productsText = '';
-  items.forEach((item) => {
-    productsText += `\n• ${item.name}\n  Package: ${item.packageLabel}\n  Price: ${item.price}\n`;
-  });
+  if (Array.isArray(items)) {
+    items.forEach((item) => {
+      productsText += `\n• ${item.name}\n  Package: ${item.packageLabel}\n  Price: ${item.price}\n`;
+    });
+  }
 
   let message = `Hello! I'd like to start an order with Zekrak
 
@@ -22,10 +24,11 @@ Can post on page: ${canPost || 'Yes'}
 
 Products
 ---------${productsText}
-Total Products: ${items.length}`;
+Total Products: ${items ? items.length : 0}`;
 
   const encodedMessage = encodeURIComponent(message);
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
 
-  window.open(whatsappUrl, '_blank');
+  // التوجيه المباشر لتفادي الـ Popup Blocker
+  window.location.href = whatsappUrl;
 }
