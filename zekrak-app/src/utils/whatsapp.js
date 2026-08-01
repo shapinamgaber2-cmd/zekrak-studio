@@ -1,5 +1,5 @@
 export function openWhatsAppOrderMulti({ name, phone, email, address, canPost, items }) {
-  const phoneNumber = '201000000000'; // استبدلي الرقم برقم الواتساب الخاص بكِ
+  const phoneNumber = '201200990798'; // استبدلي الرقم برقم الواتساب الخاص بكِ
 
   let productsText = '';
   items.forEach((item) => {
