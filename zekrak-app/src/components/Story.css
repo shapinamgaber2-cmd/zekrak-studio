@@ -1,0 +1,122 @@
+/* ==========================================
+   STORY SECTION (DESKTOP & GENERAL)
+   ========================================== */
+.story {
+  background: var(--color-blush);
+  padding: 60px 0; /* تقليل المسافة العلوية والسفلية للسكشن */
+}
+
+.story__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.story__media img {
+  width: 100%;
+  border-radius: var(--radius-image, 16px);
+  box-shadow: var(--shadow-card, 0 10px 30px rgba(74, 14, 23, 0.12));
+  display: block;
+}
+
+.story__heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(28px, 3.6vw, 40px);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 20px;
+  color: var(--color-maroon, #4a0e17);
+}
+
+.story__divider {
+  display: block;
+  width: 64px;
+  height: 3px;
+  background: var(--color-maroon-border);
+  margin-bottom: 24px;
+}
+
+.story__paragraph {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--color-text-soft, #555);
+  margin: 0 0 16px;
+}
+
+.story__features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 24px 0 28px;
+}
+
+.story__feature {
+  border: 1.5px solid var(--color-maroon-border);
+  border-radius: var(--radius-pill, 50px);
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-maroon, #4a0e17);
+}
+
+
+/* ==========================================
+   RESPONSIVE (SHRINK SIDE-BY-SIDE ON MOBILE)
+   ========================================== */
+@media (max-width: 768px) {
+  .story {
+    padding: 24px 0;
+  }
+
+  .story__inner {
+    display: grid;
+    /* الحفاظ على عمودين جنب بعض على الموبايل (الصورة يسار/يمين حسب ترتيب HTML) */
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 12px; /* تقليل المسافة بين العمودين */
+    align-items: center;
+  }
+
+  .story__media {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .story__media img {
+    border-radius: 10px;
+  }
+
+  .story__heading {
+    font-size: clamp(18px, 5vw, 26px);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+
+  .story__divider {
+    width: 36px;
+    height: 2px;
+    margin-bottom: 10px;
+  }
+
+  .story__paragraph {
+    font-size: 11px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+
+  .story__features {
+    gap: 6px;
+    margin: 10px 0 14px;
+  }
+
+  .story__feature {
+    padding: 4px 10px;
+    font-size: 9.5px;
+    border-width: 1px;
+  }
+
+  .story .btn {
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+}

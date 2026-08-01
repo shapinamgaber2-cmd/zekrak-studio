@@ -1,0 +1,132 @@
+/* ==========================================
+   PROCESS SECTION (DESKTOP & GENERAL)
+   ========================================== */
+.process {
+  background: var(--color-blush);
+  padding: 40px 0; /* تقليل المسافة العلوية والسفلية للسكشن */
+}
+
+.process__intro {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.process__heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(28px, 4vw, 44px);
+  color: var(--color-maroon, #4a0e17);
+  margin-bottom: 8px;
+}
+
+.process__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.process__card {
+  background: var(--color-cream, #fdfbf7);
+  border-radius: var(--radius-card, 16px);
+  padding: 24px 20px;
+  box-shadow: 0 4px 15px rgba(74, 14, 23, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.process__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(74, 14, 23, 0.08);
+}
+
+.process__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.process__icon {
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.process__icon img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.process__number {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--color-blush-deep, #e2cbcd);
+  line-height: 1;
+}
+
+.process__title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: var(--color-maroon, #4a0e17);
+}
+
+.process__desc {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--color-text-soft, #555);
+  margin: 0;
+}
+
+
+/* ==========================================
+   RESPONSIVE (SHRINK ON MOBILE)
+   ========================================== */
+@media (max-width: 768px) {
+  .process {
+    padding: 24px 0 30px;
+  }
+
+  .process__intro {
+    margin-bottom: 20px;
+  }
+
+  .process__heading {
+    font-size: clamp(20px, 5.5vw, 30px);
+  }
+
+  /* الحفاظ على الكروت 2 في كل سطر (2x2 Grid) أو 4 بنظام الانكماش */
+  .process__grid {
+    grid-template-columns: repeat(2, 1fr); /* شبكة 2x2 للخطوات على الموبايل */
+    gap: 10px; /* تقليل الفجوات بين الكروت */
+  }
+
+  .process__card {
+    padding: 14px 12px;
+    border-radius: 12px;
+  }
+
+  .process__top {
+    margin-bottom: 10px;
+  }
+
+  .process__icon img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .process__number {
+    font-size: 24px;
+  }
+
+  .process__title {
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+
+  .process__desc {
+    font-size: 10.5px;
+    line-height: 1.35;
+  }
+}

@@ -1,0 +1,217 @@
+.product-card {
+  background: var(--color-cream);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* تأثير انسيابي ومريح جداً عند الـ Hover */
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* رفع الكارت خفيف مع إضافة ظل ناعم عند الوقوف عليه */
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(74, 21, 27, 0.08);
+}
+
+.product-card__media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden; /* يضمن إبقاء الصورة المكبرة داخل نطاق الحاوية */
+  border-bottom: 1px solid rgba(74, 14, 23, 0.12); /* خط فاصل رفيع ولطيف تحت الصورة */
+}
+
+.product-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* سرعة وسلاسة التكبير */
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+/* تكبير الصورة بنسبة ناعمة (5%) عند الماوس hover */
+.product-card:hover .product-card__media img {
+  transform: scale(1.05);
+}
+
+.product-card__badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--color-maroon);
+  color: var(--color-blush);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  z-index: 2; /* يضمن ظهور البادج دائماً فوق الصورة */
+}
+
+/* --- عناصر التحكم في سلايدر صور المنتج --- */
+.product-card__slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--color-maroon);
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s ease, background-color 0.2s ease;
+  z-index: 3;
+  cursor: pointer;
+}
+
+/* تظهر أزرار التنقل فقط عند مرور الماوس على الصورة */
+.product-card__media:hover .product-card__slider-nav {
+  opacity: 1;
+}
+
+.product-card__slider-nav:hover {
+  background: var(--color-white);
+}
+
+.product-card__slider-nav--prev {
+  left: 10px;
+}
+
+.product-card__slider-nav--next {
+  right: 10px;
+}
+
+.product-card__slider-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 3;
+}
+
+/* تعديل نقط السلايدر لتكون أغمق وأوضح */
+.product-card__slider-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-maroon, #4a0e17);
+  opacity: 0.45; /* تغميق اللون العادي للنقطة */
+  transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+}
+
+.product-card__slider-dot.is-active {
+  background-color: var(--color-maroon, #4a0e17);
+  opacity: 1; /* النقطة النشطة تظهر بالكامل */
+  transform: scale(1.25);
+}
+
+.product-card__body {
+  padding: 20px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.product-card__category {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0 0 6px;
+}
+
+.product-card__name {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: #1a1a1a;
+}
+
+.product-card__desc {
+  font-size: 14px;
+  color: var(--color-text-soft);
+  margin: 0 0 16px;
+  line-height: 1.5;
+  white-space: pre-line;
+  flex: 1;
+}
+
+/* --- أزرار اختيار السعر --- */
+.product-card__price-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+.product-card__price-option {
+  background: transparent;
+  border: 1.5px solid var(--color-maroon-border);
+  color: var(--color-maroon);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.product-card__price-option:hover {
+  border-color: var(--color-maroon);
+}
+
+.product-card__price-option.is-active {
+  background: var(--color-maroon);
+  color: var(--color-blush);
+  border-color: var(--color-maroon);
+}
+
+.product-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  gap: 12px;
+}
+
+.product-card__price {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 19px;
+  color: var(--color-maroon);
+}
+
+/* --- تعديل زرار ADD --- */
+.product-card__cta {
+  background: var(--color-maroon);
+  color: var(--color-white, #fff);
+  border: none;
+  padding: 8px 20px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.product-card__cta:hover {
+  opacity: 0.9;
+  transform: scale(1.03); /* تكبير خفيف للزرار عند التفاعل */
+}

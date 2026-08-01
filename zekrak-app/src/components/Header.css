@@ -1,0 +1,115 @@
+.header {
+  background: var(--color-blush);
+  border-bottom: 1px solid var(--color-maroon-border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* محاذاة اللوجو في اليسار واللينكات في اليمين تلقائياً */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
+}
+
+/* --- تنسيق اللوجو --- */
+.header__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.header__logo-img {
+  width: 160px; /* حجم متناسق للوجو */
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* --- القائمة الرئيسية (Desktop Nav) --- */
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 40px; /* مسافة متناسقة ومريحة بين العناصر */
+  margin-left: auto; /* يدفع اللينكات للجهة الأخرى تلقائياً حسب عرض الشاشة */
+}
+
+.header__link {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-maroon);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.header__link:hover {
+  opacity: 0.7;
+}
+
+/* --- زرار الموبايل (Hamburger Button) --- */
+.header__menu-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.header__menu-btn span {
+  width: 22px;
+  height: 2px;
+  background: var(--color-maroon);
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+/* --- قائمة الموبايل المنسدلة --- */
+.header__mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 24px 20px;
+  background: var(--color-blush);
+  border-bottom: 1px solid var(--color-maroon-border);
+}
+
+.header__mobile-nav .header__link {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-maroon-border);
+}
+
+.header__mobile-nav .header__link:last-child {
+  border-bottom: none;
+}
+
+/* --- التجاوب مع شاشات الموبايل والتابلت --- */
+@media (max-width: 860px) {
+  .header__inner {
+    justify-content: space-between;
+    padding: 12px 20px;
+  }
+
+  .header__logo-img {
+    width: 130px; /* تصغير اللوجو خفيف في الشاشات الصغيرة */
+  }
+
+  .header__nav {
+    display: none; /* إخفاء اللينكات العادية في الموبايل */
+  }
+
+  .header__menu-btn {
+    display: flex; /* إظهار زرار القائمة في الموبايل */
+  }
+}

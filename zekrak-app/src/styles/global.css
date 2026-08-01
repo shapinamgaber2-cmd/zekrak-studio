@@ -1,0 +1,150 @@
+:root {
+  /* Colors — sampled from the approved design */
+  --color-blush: #f0dde1; /* section background (hero, products, reviews) */
+  --color-blush-deep: #e5cbd1; /* newsletter background */
+  --color-cream: #faf6f4; /* alternate light section background */
+  --color-maroon: #5c1a1e; /* primary brand / headings / buttons */
+  --color-maroon-dark: #3f1114; /* footer background */
+  --color-maroon-border: #c9a8af; /* hairline border on blush */
+  --color-white: #ffffff;
+  --color-text-muted: #8a6a6f;
+  --color-text-soft: #6b5256;
+
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --radius-pill: 999px;
+  --radius-card: 20px;
+  --radius-image: 24px;
+
+  --shadow-card: 0 20px 40px -20px rgba(92, 26, 30, 0.25);
+  --shadow-soft: 0 10px 30px -15px rgba(92, 26, 30, 0.18);
+
+  --container-width: 1280px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-maroon);
+  background: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 14px;
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-maroon);
+  margin: 0 0 12px;
+  line-height: 1.1;
+}
+
+.section-sub {
+  color: var(--color-text-soft);
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 30px;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border: 1.5px solid transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-maroon);
+  outline-offset: 3px;
+}
+
+.btn-primary {
+  background: var(--color-maroon);
+  color: var(--color-blush);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-primary:hover {
+  background: #4a1418;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-maroon);
+  border-color: var(--color-maroon);
+}
+
+.btn-outline:hover {
+  background: rgba(92, 26, 30, 0.06);
+}
+
+.btn-light {
+  background: var(--color-blush);
+  color: var(--color-maroon);
+}
+
+.btn-light:hover {
+  background: var(--color-white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

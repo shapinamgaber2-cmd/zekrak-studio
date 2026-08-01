@@ -1,0 +1,219 @@
+.hero {
+  background: var(--color-blush);
+  padding: 60px 0 20px; /* تم تقليل الـ padding السفلي إلى 20px لتقريب السكشن من الأسفل */
+  overflow: hidden;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+/* --- تنسيق العنوان بالخط المائل الشبيه بـ Playfair Display --- */
+.hero__heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(42px, 5.8vw, 68px);
+  font-weight: 800;
+  line-height: 1.05;
+  margin: 0 0 24px;
+  color: var(--color-maroon, #4a0e17);
+  letter-spacing: -0.02em;
+}
+
+.hero__heading em {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.hero__no-break {
+  white-space: nowrap;
+}
+
+.hero__desc {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--color-text-soft);
+  max-width: 480px;
+  margin: 0 0 32px;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.hero__stats {
+  display: flex;
+  gap: 56px;
+  margin-bottom: 0;
+}
+
+.hero__stats > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__stat-number {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--color-maroon, #4a0e17);
+}
+
+.hero__stat-label {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+/* --- أنيميشن حركة الصورة (Float Animation) --- */
+@keyframes heroFloat {
+  0% {
+    transform: translateY(0px) rotate(4deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(4deg);
+  }
+}
+
+/* --- حاوية الصورة بدون أي خلفية أو إطار أبيض --- */
+.hero__media {
+  position: relative;
+  max-width: 360px;
+  margin: 0 auto;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+  animation: heroFloat 4s ease-in-out infinite;
+}
+
+/* صورة المجلة نفسها */
+.hero__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+  box-shadow: 0 18px 35px rgba(74, 14, 23, 0.15);
+}
+
+/* مربع الـ Rating المعلق */
+.hero__rating {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  z-index: 3;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 10px 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.hero__rating-score {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-maroon, #4a0e17);
+}
+
+.hero__rating-count {
+  font-size: 11px;
+  color: var(--color-text-muted, #777);
+}
+
+
+/* ==========================================
+   3. RESPONSIVE / MEDIA QUERIES
+   ========================================== */
+@media (max-width: 768px) {
+  .hero {
+    padding: 24px 0 10px; /* تقليل المسافة العلوية والسفلية للموبايل */
+  }
+
+  .products {
+    padding: 20px 0 40px; /* تقليل المسافة في بداية سكشن المنتجات للموبايل */
+  }
+
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr; /* الحفاظ على عمودين جنب بعض */
+    gap: 12px;
+    align-items: center;
+  }
+
+  .hero__heading {
+    font-size: clamp(20px, 5.5vw, 32px);
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .hero__desc {
+    font-size: 11px;
+    line-height: 1.4;
+    margin-bottom: 16px;
+  }
+
+  .hero__actions {
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .hero__actions .btn {
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+
+  .hero__stats {
+    gap: 14px;
+  }
+
+  .hero__stat-number {
+    font-size: 18px;
+  }
+
+  .hero__stat-label {
+    font-size: 8px;
+    letter-spacing: 0.02em;
+  }
+
+  .hero__media {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .hero__rating {
+    top: -6px;
+    right: -6px;
+    padding: 5px 8px;
+    border-radius: 8px;
+  }
+
+  .hero__rating-score {
+    font-size: 11px;
+  }
+
+  .hero__rating-count {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 640px) {
+  .products__nav {
+    display: none;
+  }
+}

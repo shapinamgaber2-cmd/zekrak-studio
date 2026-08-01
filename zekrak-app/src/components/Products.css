@@ -1,0 +1,152 @@
+/* ==========================================
+   PRODUCTS SECTION (DESKTOP & GENERAL)
+   ========================================== */
+.products {
+  background: var(--color-blush);
+  padding: 30px 0 60px;
+}
+
+.products__intro {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 32px;
+}
+
+.products__heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(28px, 4vw, 44px);
+  color: var(--color-maroon, #4a0e17);
+  margin-bottom: 12px;
+}
+
+.products__filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+.products__filter {
+  background: transparent;
+  border: 1.5px solid var(--color-maroon-border);
+  color: var(--color-maroon);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: var(--radius-pill, 50px);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.products__filter:hover {
+  border-color: var(--color-maroon);
+}
+
+.products__filter.is-active {
+  background: var(--color-maroon);
+  color: var(--color-blush);
+  border-color: var(--color-maroon);
+}
+
+.products__slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.products__slider .swiper {
+  flex: 1;
+  padding: 6px 4px 16px;
+}
+
+.products__slider .swiper-slide {
+  height: auto;
+}
+
+.products__nav {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-maroon);
+  background: var(--color-white, #fff);
+  color: var(--color-maroon);
+  font-size: 22px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.products__nav:hover {
+  background: var(--color-maroon);
+  color: var(--color-blush);
+}
+
+.products__nav.swiper-button-disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+
+/* ==========================================
+   RESPONSIVE (MOBILE & TABLET FIXES)
+   ========================================== */
+@media (max-width: 768px) {
+  .products {
+    padding: 20px 0 40px;
+  }
+
+  .products__intro {
+    margin-bottom: 20px;
+    padding: 0 12px;
+  }
+
+  .products__heading {
+    font-size: clamp(22px, 6vw, 32px);
+    margin-bottom: 8px;
+  }
+
+  /* جعل أزرار الفلتر تتأقلم بشكل أنيق على الموبايل (سحب أفقي سريعة أصلح) */
+  .products__filters {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 4px 16px 12px;
+    margin: 0 -16px 24px;
+    gap: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* إخفاء شريط السكرول في فيرفوكس */
+  }
+
+  .products__filters::-webkit-scrollbar {
+    display: none; /* إخفاء شريط السكرول في كروم وسفاري */
+  }
+
+  .products__filter {
+    font-size: 11px;
+    padding: 7px 14px;
+    flex-shrink: 0;
+  }
+
+  .products__slider {
+    gap: 0;
+  }
+
+  .products__slider .swiper {
+    padding: 4px 2px 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  /* إخفاء أسهم التنقل في الموبايل والاعتماد على السحب بالأصابع (Swipe) */
+  .products__nav {
+    display: none !important;
+  }
+}

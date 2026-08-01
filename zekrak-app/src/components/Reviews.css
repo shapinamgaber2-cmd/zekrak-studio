@@ -1,0 +1,147 @@
+/* ==========================================
+   REVIEWS SECTION (DESKTOP & GENERAL)
+   ========================================== */
+.reviews {
+  background: var(--color-blush);
+  padding: 60px 0; /* تقليل الحشوة العلوية والسفلية للسكشن */
+}
+
+.reviews__intro {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.reviews__heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(28px, 4vw, 44px);
+  color: var(--color-maroon, #4a0e17);
+  margin-bottom: 8px;
+}
+
+.reviews__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.review-card {
+  background: var(--color-white, #ffffff);
+  border-radius: var(--radius-card, 16px);
+  padding: 28px 30px;
+  margin: 0;
+  box-shadow: 0 4px 20px rgba(74, 14, 23, 0.05);
+}
+
+.review-card__stars {
+  color: var(--color-maroon, #4a0e17);
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.review-card__quote {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.55;
+  color: #2a2a2a;
+  margin: 0 0 24px;
+}
+
+.review-card__author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.review-card__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-blush);
+  color: var(--color-maroon, #4a0e17);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.review-card__author > span:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-card__name {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-maroon, #4a0e17);
+}
+
+.review-card__city {
+  font-size: 12px;
+  color: var(--color-text-muted, #777);
+}
+
+
+/* ==========================================
+   RESPONSIVE (SHRINK SIDE-BY-SIDE ON MOBILE)
+   ========================================== */
+@media (max-width: 768px) {
+  .reviews {
+    padding: 28px 0;
+  }
+
+  .reviews__intro {
+    margin-bottom: 20px;
+  }
+
+  .reviews__heading {
+    font-size: clamp(20px, 5.5vw, 30px);
+  }
+
+  /* الحفاظ على الكروت جنب بعض في الموبايل مع تقليل الفجوة */
+  .reviews__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 0 8px;
+  }
+
+  /* انكماش الحشوة الداخلية للكارد والخطوط */
+  .review-card {
+    padding: 14px 12px;
+    border-radius: 12px;
+  }
+
+  .review-card__stars {
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .review-card__quote {
+    font-size: 11px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+
+  .review-card__author {
+    gap: 8px;
+  }
+
+  .review-card__avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+
+  .review-card__name {
+    font-size: 11px;
+  }
+
+  .review-card__city {
+    font-size: 9px;
+  }
+}

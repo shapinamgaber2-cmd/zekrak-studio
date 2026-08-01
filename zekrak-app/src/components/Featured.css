@@ -1,0 +1,142 @@
+/* ==========================================
+   FEATURED SECTION (DESKTOP & GENERAL)
+   ========================================== */
+.featured {
+  background: var(--color-maroon);
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.featured__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.featured__eyebrow {
+  color: rgba(240, 221, 225, 0.7);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.featured__heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(32px, 4.5vw, 48px);
+  font-weight: 700;
+  color: var(--color-blush);
+  line-height: 1.1;
+  margin: 0 0 20px;
+}
+
+.featured__desc {
+  color: rgba(240, 221, 225, 0.85);
+  font-size: 16px;
+  line-height: 1.65;
+  max-width: 440px;
+  margin: 0 0 32px;
+}
+
+.featured__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px 28px;
+}
+
+.featured__price {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--color-blush);
+}
+
+.featured__media {
+  position: relative;
+  min-height: 380px;
+}
+
+.featured__img {
+  position: absolute;
+  border-radius: 14px;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.5);
+  object-fit: cover;
+}
+
+.featured__img--back {
+  width: 65%;
+  top: 0;
+  left: 0;
+}
+
+.featured__img--front {
+  width: 55%;
+  bottom: 0;
+  right: 0;
+  border: 6px solid var(--color-maroon);
+}
+
+
+/* ==========================================
+   RESPONSIVE (SHRINK SIDE-BY-SIDE ON MOBILE)
+   ========================================== */
+@media (max-width: 768px) {
+  .featured {
+    padding: 30px 0;
+  }
+
+  .featured__inner {
+    display: grid;
+    /* الحفاظ على عمودين جنب بعض (الكلام يسار والصورة يمين) */
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 12px; /* تقليل الفجوة لتتسع العناصر */
+    align-items: center;
+  }
+
+  .featured__eyebrow {
+    font-size: 9px;
+    margin-bottom: 4px;
+  }
+
+  .featured__heading {
+    font-size: clamp(18px, 5vw, 28px);
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .featured__desc {
+    font-size: 11px;
+    line-height: 1.4;
+    margin-bottom: 16px;
+  }
+
+  .featured__actions {
+    gap: 8px 12px;
+  }
+
+  .featured__actions .btn {
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+
+  .featured__price {
+    font-size: 16px;
+  }
+
+  /* انكماش حاوية الصورة جنب الكلام */
+  .featured__media {
+    min-height: 180px; /* تقليل الارتفاع لتتناسب الصورة مع ارتفاع النص */
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .featured__img {
+    border-radius: 8px;
+  }
+
+  .featured__img--front {
+    border-width: 3px; /* تقليل الإطار لعدم تشتيت الحجم */
+  }
+}
