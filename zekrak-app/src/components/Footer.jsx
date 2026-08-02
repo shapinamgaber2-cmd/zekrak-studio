@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import OrderModal from './OrderModal';
 import PolicyModal from './PolicyModal';
+
 import './Footer.css';
 
 const WHATSAPP_CONTACT_LINK = 'https://wa.me/201200990798?text=Hi%20Zekrak!%20I%20have%20a%20question.';
@@ -25,7 +26,6 @@ const PRIVACY_CONTENT = (
     <ul>
       <li>50% refund if cancelled during the design phase.</li>
       <li>No refund after the final PDF design has been sent.</li>
-      
     </ul>
   </div>
 );
@@ -52,7 +52,8 @@ export default function Footer() {
   return (
     <footer className="footer" id="contact">
       <div className="container footer__inner">
-        <div className="footer__brand">
+        {/* العمود 1: اللوجو والمعلومات (الصف الأول على الموبايل - شمال) */}
+        <div className="footer__column footer__brand">
           <a href="#top" className="footer__logo">
             <img src="/assets/image2.svg" className="footer__logo-img" alt="ZEKRAK" />
           </a>
@@ -89,7 +90,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* العمود الأول: Shop */}
+        {/* العمود 2: Shop (الصف الأول على الموبايل - يمين) */}
         <div className="footer__column">
           <h4 className="footer__column-title">Shop</h4>
           <ul>
@@ -101,7 +102,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* العمود الثاني: Company */}
+        {/* العمود 3: Company (الصف الثاني على الموبايل - شمال) */}
         <div className="footer__column">
           <h4 className="footer__column-title">Company</h4>
           <ul>
@@ -110,7 +111,6 @@ export default function Footer() {
             <li><a href="#top">FAQ</a></li>
             <li><a href={WHATSAPP_CONTACT_LINK} target="_blank" rel="noopener noreferrer">Contact Us</a></li>
             
-            {/* عند الضغط على الشروط والأحكام */}
             <li>
               <button 
                 type="button" 
@@ -121,7 +121,6 @@ export default function Footer() {
               </button>
             </li>
 
-            {/* عند الضغط على سياسة الخصوصية */}
             <li>
               <button 
                 type="button" 
@@ -134,7 +133,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* العمود الثالث: How To Order */}
+        {/* العمود 4: How To Order (الصف الثاني على الموبايل - يمين) */}
         <div className="footer__column footer__order">
           <h4 className="footer__column-title">How To Order</h4>
           <ul>
