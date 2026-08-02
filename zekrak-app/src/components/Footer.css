@@ -4,7 +4,7 @@
 .footer {
   background: var(--color-maroon-dark, #2d080e);
   color: var(--color-blush, #f0dde1);
-  padding: 60px 0 0; /* تقليل المسافة العلوية */
+  padding: 60px 0 0;
 }
 
 .footer__inner {
@@ -124,80 +124,6 @@
   color: rgba(240, 221, 225, 0.6);
 }
 
-
-/* ==========================================
-   RESPONSIVE (SHRINK & GRID ON MOBILE)
-   ========================================== */
-@media (max-width: 768px) {
-  .footer {
-    padding: 28px 0 0;
-  }
-
-  /* تقسيم شبكي 2x2 متناسق على الموبايل لتقليل الطول */
-  .footer__inner {
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 20px 12px;
-  }
-
-  .footer__logo-img {
-    width: 110px;
-  }
-
-  .footer__tagline {
-    font-size: 11px;
-    line-height: 1.4;
-    margin: 10px 0 12px;
-  }
-
-  .footer__contact {
-    font-size: 10.5px;
-    gap: 4px;
-    margin-bottom: 12px;
-  }
-
-  .footer__social {
-    gap: 8px;
-    margin-bottom: 12px;
-  }
-
-  .footer__social a {
-    width: 28px;
-    height: 28px;
-  }
-
-  .footer__social svg {
-    width: 14px;
-    height: 14px;
-  }
-
-  .footer__column-title {
-    font-size: 9.5px;
-    margin-bottom: 8px;
-    padding-bottom: 6px;
-  }
-
-  .footer__column ul {
-    gap: 6px;
-    font-size: 10.5px;
-  }
-
-  .footer__order ul {
-    margin-bottom: 12px;
-  }
-
-  .footer__cta {
-    padding: 6px 10px;
-    font-size: 9.5px;
-  }
-
-  .footer__bottom {
-    margin-top: 24px;
-    padding: 14px 16px;
-    font-size: 9.5px;
-    justify-content: center;
-    text-align: center;
-  }
-}
 .footer__link-btn {
   background: none;
   border: none;
@@ -211,4 +137,85 @@
 .footer__link-btn:hover {
   text-decoration: underline;
   color: var(--color-blush, #f0dde1);
+}
+
+/* ==========================================
+   SMOOTH AUTO-SHRINK FOR MOBILE (RESPONSIVE)
+   ========================================== */
+@media (max-width: 768px) {
+  .footer {
+    padding: 32px 16px 0;
+  }
+
+  /* تحويل الشبكة إلى 2 عمود مع انكماش مرن للنسب */
+  .footer__inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 16px;
+  }
+
+  /* العمود الأول يأخذ العرض كامل فوق باقي الأعمدة */
+  .footer__inner > div:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .footer__logo-img {
+    width: clamp(100px, 30vw, 130px);
+  }
+
+  .footer__tagline {
+    font-size: clamp(12px, 3.2vw, 13px);
+    line-height: 1.45;
+    margin: 10px 0 14px;
+  }
+
+  .footer__contact {
+    font-size: clamp(11.5px, 3vw, 13px);
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .footer__social {
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .footer__social a {
+    width: 32px;
+    height: 32px;
+  }
+
+  .footer__social svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .footer__column-title {
+    font-size: clamp(10px, 2.8vw, 11px);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+  }
+
+  .footer__column ul {
+    gap: 8px;
+    font-size: clamp(11.5px, 3vw, 13px);
+  }
+
+  .footer__order ul {
+    margin-bottom: 14px;
+  }
+
+  .footer__cta {
+    padding: 8px 12px;
+    font-size: clamp(11px, 2.8vw, 12px);
+  }
+
+  .footer__bottom {
+    margin-top: 32px;
+    padding: 16px 12px;
+    font-size: clamp(10.5px, 2.8vw, 11.5px);
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+  }
 }
