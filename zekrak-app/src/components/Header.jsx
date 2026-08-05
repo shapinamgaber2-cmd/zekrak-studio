@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './Header.css';
 
 // رابط الواتساب المباشر
-const WHATSAPP_LINK = 'https://wa.me/201000000000?text=Hi%20Zekrak!%20I%20have%20a%20question.'; // استبدلي الرقم برقم زكراك الخاص
+const WHATSAPP_LINK = 'https://wa.me/201200990798?text=Hi%20Zekrak!%20I%20have%20a%20question.'; // استبدلي الرقم برقم زكراك الخاص
 
 const NAV_LINKS = [
   { label: 'Shop', href: '#shop' },
