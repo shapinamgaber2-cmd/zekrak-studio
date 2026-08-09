@@ -3,6 +3,8 @@ import OrderModal from './OrderModal';
 import './ProductCard.css';
 
 export default function ProductCard({ product }) {
+  const isSoldOut = product.isSoldOut;
+
   const images = product.images && product.images.length ? product.images : [];
   const pricingOptions = product.pricing || [];
 
@@ -30,12 +32,18 @@ export default function ProductCard({ product }) {
   };
 
   return (
-    <article className="product-card">
+    <article className={`product-card ${isSoldOut ? 'product-card--sold-out' : ''}`}>
       <div className="product-card__media">
         {images.length > 0 && (
           <img src={images[safeImageIndex]} alt={product.name} loading="lazy" />
         )}
-        {product.badge && <span className="product-card__badge">{product.badge}</span>}
+        
+        {/* بادج Sold Out يظهر فوق الصورة لو المنتج منتهي */}
+        {isSoldOut ? (
+          <span className="product-card__badge product-card__badge--sold">Sold Out</span>
+        ) : (
+          product.badge && <span className="product-card__badge">{product.badge}</span>
+        )}
 
         {hasMultipleImages && (
           <>
@@ -82,6 +90,7 @@ export default function ProductCard({ product }) {
                 className={`product-card__price-option ${i === selectedPriceIndex ? 'is-active' : ''}`}
                 aria-pressed={i === selectedPriceIndex}
                 onClick={() => setSelectedPriceIndex(i)}
+                disabled={isSoldOut}
               >
                 {option.label}
               </button>
@@ -97,9 +106,10 @@ export default function ProductCard({ product }) {
           <button
             type="button"
             className="product-card__cta"
-            onClick={() => setIsOrderModalOpen(true)}
+            onClick={() => !isSoldOut && setIsOrderModalOpen(true)}
+            disabled={isSoldOut}
           >
-            ADD
+            {isSoldOut ? 'SOLD OUT' : 'ADD'}
           </button>
         </div>
       </div>

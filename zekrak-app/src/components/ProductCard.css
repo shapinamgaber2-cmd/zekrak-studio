@@ -28,12 +28,12 @@
   height: 100%;
   object-fit: cover;
   /* سرعة وسلاسة التكبير */
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease, opacity 0.3s ease;
   will-change: transform;
 }
 
-/* تكبير الصورة بنسبة ناعمة (5%) عند الماوس hover */
-.product-card:hover .product-card__media img {
+/* تكبير الصورة بنسبة ناعمة (5%) عند الماوس hover (في حالة لم يكن المنتَج Sold Out) */
+.product-card:not(.product-card--sold-out):hover .product-card__media img {
   transform: scale(1.05);
 }
 
@@ -169,9 +169,10 @@
   padding: 6px 12px;
   border-radius: var(--radius-pill);
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
 }
 
-.product-card__price-option:hover {
+.product-card__price-option:hover:not(:disabled) {
   border-color: var(--color-maroon);
 }
 
@@ -208,10 +209,45 @@
   text-transform: uppercase;
   border-radius: 20px;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
 }
 
-.product-card__cta:hover {
+.product-card__cta:hover:not(:disabled) {
   opacity: 0.9;
   transform: scale(1.03); /* تكبير خفيف للزرار عند التفاعل */
+}
+
+/* ==========================================
+   SOLD OUT STYLES (خاص بحالة نفاذ الكمية)
+   ========================================== */
+
+/* تعتيم وتأثير الصورة للمنتج المنتهي */
+.product-card--sold-out .product-card__media img {
+  opacity: 0.65;
+  filter: grayscale(35%);
+}
+
+/* تمييز بادج Sold Out بلون أغمق وشكل واضح */
+.product-card__badge--sold {
+  background-color: var(--color-maroon-dark, #2d080e) !important;
+  color: var(--color-blush, #f0dde1) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* تعطيل خيارات الأسعار عند نفاذ المنتَج */
+.product-card__price-option:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* شكل زرار ADD لما يتغير لـ SOLD OUT */
+.product-card__cta:disabled,
+.product-card--sold-out .product-card__cta {
+  background-color: #d1d1d1 !important;
+  color: #757575 !important;
+  border-color: #d1d1d1 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+  opacity: 1;
 }
