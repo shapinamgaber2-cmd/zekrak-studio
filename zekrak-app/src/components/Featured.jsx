@@ -29,9 +29,10 @@ export default function Featured() {
             <button
               type="button"
               className="btn btn-light"
-              onClick={() => setIsOrderModalOpen(true)}
+              disabled
+              style={{ opacity: 0.6, cursor: 'not-allowed' }}
             >
-              Order Now →
+              Orders Closed
             </button>
           </div>
         </div>

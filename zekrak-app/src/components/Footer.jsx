@@ -52,7 +52,7 @@ export default function Footer() {
   return (
     <footer className="footer" id="contact">
       <div className="container footer__inner">
-        {/* العمود 1: اللوجو والمعلومات (الصف الأول على الموبايل - شمال) */}
+        {/* العمود 1: اللوجو والمعلومات */}
         <div className="footer__column footer__brand">
           <a href="#top" className="footer__logo">
             <img src="/assets/image2.svg" className="footer__logo-img" alt="ZEKRAK" />
@@ -90,7 +90,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* العمود 2: Shop (الصف الأول على الموبايل - يمين) */}
+        {/* العمود 2: Shop */}
         <div className="footer__column">
           <h4 className="footer__column-title">Shop</h4>
           <ul>
@@ -102,7 +102,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* العمود 3: Company (الصف الثاني على الموبايل - شمال) */}
+        {/* العمود 3: Company */}
         <div className="footer__column">
           <h4 className="footer__column-title">Company</h4>
           <ul>
@@ -133,7 +133,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* العمود 4: How To Order (الصف الثاني على الموبايل - يمين) */}
+        {/* العمود 4: How To Order (تم تعطيل زرار الطلب هنا) */}
         <div className="footer__column footer__order">
           <h4 className="footer__column-title">How To Order</h4>
           <ul>
@@ -141,8 +141,13 @@ export default function Footer() {
               <li key={step}>{step}</li>
             ))}
           </ul>
-          <button type="button" className="btn btn-light footer__cta" onClick={() => setIsOrderModalOpen(true)}>
-            Start Your Order →
+          <button 
+            type="button" 
+            className="btn btn-light footer__cta" 
+            disabled
+            style={{ opacity: 0.6, cursor: 'not-allowed' }}
+          >
+            Orders Closed
           </button>
         </div>
       </div>

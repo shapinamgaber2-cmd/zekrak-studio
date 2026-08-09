@@ -44,8 +44,13 @@ export default function Story() {
             ))}
           </div>
 
-          <button type="button" className="btn btn-primary" onClick={() => setIsOrderModalOpen(true)}>
-            Order on WhatsApp →
+          <button 
+            type="button" 
+            className="btn btn-primary" 
+            disabled
+            style={{ opacity: 0.6, cursor: 'not-allowed' }}
+          >
+            Orders Closed
           </button>
         </div>
       </div>
