@@ -274,3 +274,28 @@
     width: 100%;
   }
 }
+/* ==========================================
+   CITY SELECT DROPDOWN
+   ========================================== */
+.order-modal__select {
+  font-family: inherit;
+  font-size: 14px;
+  padding: 10px 12px;
+  border: 1.5px solid var(--color-maroon-border, #d4a5ab);
+  border-radius: 10px;
+  color: #1a1a1a;
+  background: var(--color-white, #ffffff);
+  transition: border-color 0.2s ease;
+  width: 100%;
+  cursor: pointer;
+}
+
+.order-modal__select:focus {
+  outline: none;
+  border-color: var(--color-maroon, #4a0e17);
+}
+
+.order-modal__select:invalid,
+.order-modal__select option[value=""][disabled] {
+  color: #777; /* لجعل لون كلمة "Select your city" باهت قليلاً */
+}
