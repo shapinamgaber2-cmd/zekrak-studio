@@ -79,12 +79,15 @@ export default function OrderModal({ isOpen, onClose, initialProductId, initialP
     }));
   };
 
+  // التحقق من الحقول الإلزامية
   const validate = () => {
     const nextErrors = {};
     if (!form.name.trim()) nextErrors.name = 'Full name is required.';
     if (!form.phone.trim()) nextErrors.phone = 'Phone number is required.';
     if (!form.city) nextErrors.city = 'Please select a city.';
-    if (!form.address.trim()) nextErrors.address = 'Delivery address is required.';
+    if (!form.address.trim()) nextErrors.address = 'Street / Building address is required.';
+    if (!form.floor.trim()) nextErrors.floor = 'Floor number is required.';
+    if (!form.apartment.trim()) nextErrors.apartment = 'Apartment number is required.';
 
     const hasSelectedProduct = Object.values(selections).some((s) => s.checked);
     if (!hasSelectedProduct) nextErrors.products = 'Please select at least one product.';
@@ -106,10 +109,7 @@ export default function OrderModal({ isOpen, onClose, initialProductId, initialP
       };
     });
 
-    // دمج الدور والشقة مع العنوان بشكل فريندلي
-    let fullAddressDetails = form.address.trim();
-    if (form.floor.trim()) fullAddressDetails += ` - Floor: ${form.floor.trim()}`;
-    if (form.apartment.trim()) fullAddressDetails += ` - Apt: ${form.apartment.trim()}`;
+    const fullAddressDetails = `${form.address.trim()} - Floor: ${form.floor.trim()} - Apt: ${form.apartment.trim()}`;
 
     openWhatsAppOrderMulti({
       name: form.name.trim(),
@@ -176,15 +176,15 @@ export default function OrderModal({ isOpen, onClose, initialProductId, initialP
           </div>
 
           <div className="order-modal__field">
-            <label htmlFor="order-address">Detailed Delivery Address (Street / Building) *</label>
+            <label htmlFor="order-address">Street / Building Address *</label>
             <input id="order-address" type="text" value={form.address} onChange={handleFieldChange('address')} />
             {errors.address && <span className="order-modal__error">{errors.address}</span>}
           </div>
 
-          {/* حقول جديدة: الدور والشقة بجانب بعض */}
+          {/* حقول الدور والشقة الإلزامية */}
           <div className="order-modal__field-row">
             <div className="order-modal__field">
-              <label htmlFor="order-floor">Floor No.</label>
+              <label htmlFor="order-floor">Floor No. *</label>
               <input 
                 id="order-floor" 
                 type="text" 
@@ -192,10 +192,11 @@ export default function OrderModal({ isOpen, onClose, initialProductId, initialP
                 value={form.floor} 
                 onChange={handleFieldChange('floor')} 
               />
+              {errors.floor && <span className="order-modal__error">{errors.floor}</span>}
             </div>
 
             <div className="order-modal__field">
-              <label htmlFor="order-apartment">Apartment / Flat No.</label>
+              <label htmlFor="order-apartment">Apartment / Flat No. *</label>
               <input 
                 id="order-apartment" 
                 type="text" 
@@ -203,6 +204,7 @@ export default function OrderModal({ isOpen, onClose, initialProductId, initialP
                 value={form.apartment} 
                 onChange={handleFieldChange('apartment')} 
               />
+              {errors.apartment && <span className="order-modal__error">{errors.apartment}</span>}
             </div>
           </div>
 
