@@ -6,7 +6,7 @@ import './Story.css';
 const FEATURES = ['Premium Printing', 'Fast Delivery', 'Custom Design'];
 
 export default function Story() {
-  const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
+  const [isOrderModalOpen, setIsOrderModalOpen] = useState(true);
 
   return (
     <section className="story" id="about">

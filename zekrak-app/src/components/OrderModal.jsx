@@ -4,6 +4,15 @@ import { PRODUCTS } from '../data/products';
 import { openWhatsAppOrderMulti } from '../utils/whatsapp';
 import './OrderModal.css';
 
+// مصفوفة تحتوي على جميع محافظات مصر
+const EGYPT_GOVERNORATES = [
+  "Alexandria", "Aswan", "Assiut", "Beheira", "Beni Suef", 
+  "Cairo", "Dakahlia", "Damietta", "Faiyum", "Gharbia", 
+  "Giza", "Ismailia", "Kafr El Sheikh", "Luxor", "Matrouh", 
+  "Minya", "Monufia", "New Valley", "North Sinai", "Port Said", 
+  "Qalyubia", "Qena", "Red Sea", "Sohag", "South Sinai", "Suez"
+];
+
 function buildInitialSelections(initialProductId, initialPricingIndex) {
   const selections = {};
   PRODUCTS.forEach((product) => {
@@ -17,7 +26,7 @@ function buildInitialSelections(initialProductId, initialPricingIndex) {
 }
 
 export default function OrderModal({ isOpen, onClose, initialProductId, initialPricingIndex = 0 }) {
-  const [form, setForm] = useState({ name: '', phone: '', email: '', address: '', canPost: 'yes' });
+  const [form, setForm] = useState({ name: '', phone: '', email: '', city: '', address: '', canPost: 'yes' });
   const [errors, setErrors] = useState({});
   const [selections, setSelections] = useState(() =>
     buildInitialSelections(initialProductId, initialPricingIndex)
@@ -25,7 +34,7 @@ export default function OrderModal({ isOpen, onClose, initialProductId, initialP
 
   useEffect(() => {
     if (isOpen) {
-      setForm({ name: '', phone: '', email: '', address: '', canPost: 'yes' });
+      setForm({ name: '', phone: '', email: '', city: '', address: '', canPost: 'yes' });
       setErrors({});
       setSelections(buildInitialSelections(initialProductId, initialPricingIndex));
     }
@@ -55,6 +64,7 @@ export default function OrderModal({ isOpen, onClose, initialProductId, initialP
     const nextErrors = {};
     if (!form.name.trim()) nextErrors.name = 'Full name is required.';
     if (!form.phone.trim()) nextErrors.phone = 'Phone number is required.';
+    if (!form.city) nextErrors.city = 'Please select a city.';
     if (!form.address.trim()) nextErrors.address = 'Delivery address is required.';
 
     const hasSelectedProduct = Object.values(selections).some((s) => s.checked);
@@ -81,6 +91,7 @@ export default function OrderModal({ isOpen, onClose, initialProductId, initialP
       name: form.name.trim(),
       phone: form.phone.trim(),
       email: form.email.trim(),
+      city: form.city, 
       address: form.address.trim(),
       canPost: form.canPost === 'yes' ? 'Yes' : 'No',
       items,
@@ -123,7 +134,25 @@ export default function OrderModal({ isOpen, onClose, initialProductId, initialP
           </div>
 
           <div className="order-modal__field">
-            <label htmlFor="order-address">Delivery Address *</label>
+            <label htmlFor="order-city">City / Governorate *</label>
+            <select 
+              id="order-city" 
+              value={form.city} 
+              onChange={handleFieldChange('city')}
+              className="order-modal__select"
+            >
+              <option value="" disabled>Select your city...</option>
+              {EGYPT_GOVERNORATES.map((gov) => (
+                <option key={gov} value={gov}>
+                  {gov}
+                </option>
+              ))}
+            </select>
+            {errors.city && <span className="order-modal__error">{errors.city}</span>}
+          </div>
+
+          <div className="order-modal__field">
+            <label htmlFor="order-address">Detailed Delivery Address *</label>
             <input id="order-address" type="text" value={form.address} onChange={handleFieldChange('address')} />
             {errors.address && <span className="order-modal__error">{errors.address}</span>}
           </div>
@@ -172,7 +201,7 @@ export default function OrderModal({ isOpen, onClose, initialProductId, initialP
           {/* سؤال السماح بنشر الأوردر */}
           <div className="order-modal__field order-modal__field--radio">
             <label className="order-modal__question-label">
-              Can we post your order on zekrak's page after you receive it?
+              Can we post your order on zikrak's page after you receive it?
             </label>
             <div className="order-modal__radio-group">
               <label className="order-modal__radio-label">
@@ -198,12 +227,13 @@ export default function OrderModal({ isOpen, onClose, initialProductId, initialP
             </div>
           </div>
 
-          {/* صندوق الملاحظات الشاملة (مدة التجهيز والعربون) */}
+          {/* صندوق الملاحظات الشاملة */}
           <div className="order-modal__info-box">
             <p className="order-modal__info-title">📌 Important Notes:</p>
             <ul>
               <li>Order takes from 7–10 days</li>
               <li>For order confirmation, send 50% deposit</li>
+              <li>Delivery fees are calculated based on your city and address</li>
             </ul>
           </div>
 
