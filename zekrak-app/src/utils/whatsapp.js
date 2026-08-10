@@ -1,4 +1,4 @@
-export function openWhatsAppOrderMulti({ name, phone, email, address, canPost, items = [] }) {
+export function openWhatsAppOrderMulti({ name, phone, email, city, address, canPost, items = [] }) {
   const phoneNumber = '201200990798';
 
   let productsText = '';
@@ -17,7 +17,11 @@ Phone: ${phone}`;
     message += `\nEmail: ${email}`;
   }
 
-  message += `\nAddress: ${address}
+  if (city) {
+    message += `\nCity / Governorate: ${city}`;
+  }
+
+  message += `\nAddress Details: ${address}
 Can post on page: ${canPost || 'Yes'}
 
 Products

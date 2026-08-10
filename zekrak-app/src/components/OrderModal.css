@@ -299,3 +299,11 @@
 .order-modal__select option[value=""][disabled] {
   color: #777; /* لجعل لون كلمة "Select your city" باهت قليلاً */
 }
+.order-modal__field-row {
+  display: flex;
+  gap: 12px;
+}
+
+.order-modal__field-row .order-modal__field {
+  flex: 1;
+}

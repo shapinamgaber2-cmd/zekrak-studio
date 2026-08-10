@@ -26,7 +26,17 @@ function buildInitialSelections(initialProductId, initialPricingIndex) {
 }
 
 export default function OrderModal({ isOpen, onClose, initialProductId, initialPricingIndex = 0 }) {
-  const [form, setForm] = useState({ name: '', phone: '', email: '', city: '', address: '', canPost: 'yes' });
+  const [form, setForm] = useState({ 
+    name: '', 
+    phone: '', 
+    email: '', 
+    city: '', 
+    address: '', 
+    floor: '', 
+    apartment: '', 
+    canPost: 'yes' 
+  });
+  
   const [errors, setErrors] = useState({});
   const [selections, setSelections] = useState(() =>
     buildInitialSelections(initialProductId, initialPricingIndex)
@@ -34,7 +44,16 @@ export default function OrderModal({ isOpen, onClose, initialProductId, initialP
 
   useEffect(() => {
     if (isOpen) {
-      setForm({ name: '', phone: '', email: '', city: '', address: '', canPost: 'yes' });
+      setForm({ 
+        name: '', 
+        phone: '', 
+        email: '', 
+        city: '', 
+        address: '', 
+        floor: '', 
+        apartment: '', 
+        canPost: 'yes' 
+      });
       setErrors({});
       setSelections(buildInitialSelections(initialProductId, initialPricingIndex));
     }
@@ -87,12 +106,17 @@ export default function OrderModal({ isOpen, onClose, initialProductId, initialP
       };
     });
 
+    // دمج الدور والشقة مع العنوان بشكل فريندلي
+    let fullAddressDetails = form.address.trim();
+    if (form.floor.trim()) fullAddressDetails += ` - Floor: ${form.floor.trim()}`;
+    if (form.apartment.trim()) fullAddressDetails += ` - Apt: ${form.apartment.trim()}`;
+
     openWhatsAppOrderMulti({
       name: form.name.trim(),
       phone: form.phone.trim(),
       email: form.email.trim(),
       city: form.city, 
-      address: form.address.trim(),
+      address: fullAddressDetails,
       canPost: form.canPost === 'yes' ? 'Yes' : 'No',
       items,
     });
@@ -152,9 +176,34 @@ export default function OrderModal({ isOpen, onClose, initialProductId, initialP
           </div>
 
           <div className="order-modal__field">
-            <label htmlFor="order-address">Detailed Delivery Address *</label>
+            <label htmlFor="order-address">Detailed Delivery Address (Street / Building) *</label>
             <input id="order-address" type="text" value={form.address} onChange={handleFieldChange('address')} />
             {errors.address && <span className="order-modal__error">{errors.address}</span>}
+          </div>
+
+          {/* حقول جديدة: الدور والشقة بجانب بعض */}
+          <div className="order-modal__field-row">
+            <div className="order-modal__field">
+              <label htmlFor="order-floor">Floor No.</label>
+              <input 
+                id="order-floor" 
+                type="text" 
+                placeholder="e.g. 3" 
+                value={form.floor} 
+                onChange={handleFieldChange('floor')} 
+              />
+            </div>
+
+            <div className="order-modal__field">
+              <label htmlFor="order-apartment">Apartment / Flat No.</label>
+              <input 
+                id="order-apartment" 
+                type="text" 
+                placeholder="e.g. 12" 
+                value={form.apartment} 
+                onChange={handleFieldChange('apartment')} 
+              />
+            </div>
           </div>
 
           <div className="order-modal__products">
