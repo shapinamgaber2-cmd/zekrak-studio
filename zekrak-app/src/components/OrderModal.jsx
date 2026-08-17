@@ -285,6 +285,7 @@ export default function OrderModal({ isOpen, onClose, initialProductId, initialP
               <li>Order takes from 7–10 days</li>
               <li>For order confirmation, send 50% deposit</li>
               <li>Delivery fees are calculated based on your city and address</li>
+              <li>Two-time design change limit after the final design is sent.</li>
             </ul>
           </div>
 

@@ -4,7 +4,7 @@ import featured2 from '../assets/images/featured-2.jpg';
 import OrderModal from './OrderModal';
 import './Featured.css';
 
-const FEATURED_PRODUCT = { name: 'The Aesthetic Couple Magazine' };
+const FEATURED_PRODUCT = { name: 'The Aesthetic Couple Magazine', price: '350 EGP' };
 
 export default function Featured() {
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
@@ -29,10 +29,9 @@ export default function Featured() {
             <button
               type="button"
               className="btn btn-light"
-              disabled
-              style={{ opacity: 0.6, cursor: 'not-allowed' }}
+              onClick={() => setIsOrderModalOpen(true)}
             >
-              Orders Closed
+              Order Now
             </button>
           </div>
         </div>

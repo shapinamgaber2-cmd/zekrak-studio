@@ -79,6 +79,8 @@ export default function ProductCard({ product }) {
       <div className="product-card__body">
         <p className="product-card__category">{product.category}</p>
         <h3 className="product-card__name">{product.name}</h3>
+        
+        {/* وصف المنتج يظهر كاملاً بدون اختصار */}
         <p className="product-card__desc">{product.description}</p>
 
         {hasPriceOptions && (

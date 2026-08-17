@@ -1,5 +1,5 @@
 export function openWhatsAppOrderMulti({ name, phone, email, city, address, canPost, items = [] }) {
-  const phoneNumber = '201200990798';
+  const phoneNumber = '201202875671';
 
   let productsText = '';
   items.forEach((item) => {

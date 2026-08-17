@@ -47,10 +47,9 @@ export default function Story() {
           <button 
             type="button" 
             className="btn btn-primary" 
-            disabled
-            style={{ opacity: 0.6, cursor: 'not-allowed' }}
+            onClick={() => setIsOrderModalOpen(true)}
           >
-            Orders Closed
+            Order Now
           </button>
         </div>
       </div>

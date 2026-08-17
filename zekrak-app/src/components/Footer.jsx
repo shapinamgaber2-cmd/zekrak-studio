@@ -133,7 +133,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* العمود 4: How To Order (تم تعطيل زرار الطلب هنا) */}
+        {/* العمود 4: How To Order (تم تفعيل زرار الطلب هنا) */}
         <div className="footer__column footer__order">
           <h4 className="footer__column-title">How To Order</h4>
           <ul>
@@ -144,10 +144,9 @@ export default function Footer() {
           <button 
             type="button" 
             className="btn btn-light footer__cta" 
-            disabled
-            style={{ opacity: 0.6, cursor: 'not-allowed' }}
+            onClick={() => setIsOrderModalOpen(true)}
           >
-            Orders Closed
+            Order Now
           </button>
         </div>
       </div>
