@@ -4,7 +4,7 @@ import PolicyModal from './PolicyModal';
 
 import './Footer.css';
 
-const WHATSAPP_CONTACT_LINK = 'https://wa.me/201200990798?text=Hi%20Zekrak!%20I%20have%20a%20question.';
+const WHATSAPP_CONTACT_LINK = 'https://wa.me/201202875671?text=Hi%20Zekrak!%20I%20have%20a%20question.';
 
 // نص الشروط والأحكام
 const TERMS_CONTENT = (
